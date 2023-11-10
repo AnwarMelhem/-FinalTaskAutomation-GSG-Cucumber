@@ -1,0 +1,30 @@
+{
+  "name": "finaltaskautomation-gsg-cucumber",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.5.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^19.1.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "esbuild": "^0.19.5"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+    "cypress/e2e/**/[filepath]/**/*.{js,ts}",
+    "cypress/e2e/**/[filepath].{js,ts}"
+    ],
+    "filterSpecs": true,
+    "omitFiltered": true
+    }
+   
+}
