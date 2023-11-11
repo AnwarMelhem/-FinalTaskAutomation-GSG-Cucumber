@@ -34,4 +34,14 @@ export default class Dashboard {
 
     cy.wait(["@claim", "@leave", "@holidays"]);
   }
+
+  static clicksToRecruitmentTab() {
+   
+    cy.intercept("/web/index.php/api/v2/leave/workweek**").as("leave");
+    cy.intercept("/web/index.php/api/v2/leave/holidays**").as("holidays");
+
+    this.mainMenuItems().contains("Recruitment").click({ force: true });
+
+    cy.wait(["@leave", "@holidays"]);
+  }
 }
