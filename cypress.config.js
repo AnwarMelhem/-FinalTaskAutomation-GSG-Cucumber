@@ -8,6 +8,9 @@ module.exports = defineConfig({
       // implement node event listeners here
       return require("./cypress/plugins")(on, config);
     },
+    env: {
+      snapshotOnly: true
+    },
     baseUrl: "https://opensource-demo.orangehrmlive.com"
   },
 });
