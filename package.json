@@ -10,22 +10,21 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "cypress": "^13.5.0",
+    "cypress": "^12.14.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^19.1.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "esbuild": "^0.19.5",
-    "cypress-plugin-api": "^2.11.1"
+    "cypress-plugin-api": "^2.11.1",
+    "esbuild": "^0.19.5"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
-    "cypress/e2e/**/[filepath]/**/*.{js,ts}",
-    "cypress/e2e/**/[filepath].{js,ts}"
+      "cypress/e2e/**/[filepath]/**/*.{js,ts}",
+      "cypress/e2e/**/[filepath].{js,ts}"
     ],
     "filterSpecs": true,
     "omitFiltered": true
-    }
-   
+  }
 }
