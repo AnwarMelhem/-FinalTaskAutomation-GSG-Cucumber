@@ -91,7 +91,11 @@ export default class Phase3Apis {
     });
   }
   // Create Login Details API Request
-  static createLoginDetails(empNumber: number, username: string, password: string) {
+  static createLoginDetails(
+    empNumber: number,
+    username: string,
+    password: string
+  ) {
     cy.api({
       method: "POST",
       url: "/web/index.php/api/v2/admin/users",
@@ -145,6 +149,9 @@ export default class Phase3Apis {
         },
       }).then((response) => {
         expect(response).property("status").to.equal(200);
+        response.body.data.firstName;
+        response.body.data.middleName;
+        response.body.data.lastName;
       });
     });
   }
@@ -173,9 +180,12 @@ export default class Phase3Apis {
         expect(response).property("status").to.equal(200);
       });
     });
-    
   }
-  static sheduleInterviewCandidate(CandidateID: any, interviewerEmpNumber: number,interviewName:string) {
+  static sheduleInterviewCandidate(
+    CandidateID: any,
+    interviewerEmpNumber: number,
+    interviewName: string
+  ) {
     return cy.wrap(undefined).then(() => {
       cy.api({
         method: "POST",
@@ -191,6 +201,5 @@ export default class Phase3Apis {
         console.log(response);
       });
     });
- 
   }
 }
