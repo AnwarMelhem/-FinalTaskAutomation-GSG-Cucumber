@@ -15,6 +15,13 @@ class RecruitmentTab {
     saveButton: () => cy.get('[type="submit"]').contains("Save"),
     titleAssertion: () => cy.get(".oxd-text.oxd-text--h6.orangehrm-main-title"),
     statusAssertion: () => cy.get(".oxd-text.oxd-text--p.oxd-text--subtitle-2"),
+    editButton: () =>
+      cy.get(".oxd-switch-input.oxd-switch-input--active.--label-left"),
+    browse: () => cy.get(".oxd-file-button"),
+    file: () => cy.get('input[type="file"]'),
+    assertion: () => cy.get(".oxd-file-input-div"),
+    dawnloadButton: () => cy.get(".oxd-icon.bi-download"),
+    candidatesNavigateTab: () => cy.get(".oxd-topbar-body-nav-tab").eq(0),
   };
 
   // all action needed created by functions
@@ -81,6 +88,44 @@ class RecruitmentTab {
   }
   static CheckbuttonsExistingForFailedStatus() {
     cy.contains("button", "Reject").should("exist");
+  }
+
+  static enableEditButton() {
+    this.elements.editButton().click({ force: true });
+  }
+
+  static attachFile(FilePath: string) {
+    this.elements.browse().click({ force: true });
+    this.elements.file().selectFile(FilePath, { force: true });
+  }
+  static assetionNameFile(NameFile: string) {
+    this.elements.assertion().should("contain", NameFile);
+  }
+  static clicksToSaveButton() {
+    cy.intercept("web/index.php/api/v2/recruitment/candidates/**").as(
+      "candidate"
+    );
+
+    this.elements.saveButton().click({ force: true });
+
+    cy.wait("@candidate");
+  }
+  static clicksToDawnloadButton() {
+    this.elements.dawnloadButton().click({ force: true });
+  }
+  static clicksToCandidatesNavigateTab() {
+    this.elements.candidatesNavigateTab().click({ force: true });
+  }
+
+  static verifyContentFile(fileName:string) {
+    // Read the content of the uploaded file from fixtures
+    cy.fixture(fileName).then((uploadedContent) => {
+      // Read the content of the downloaded file
+      cy.readFile(`cypress/downloads/${fileName}`).then((downloadedContent) => {
+        // Use Cypress assertions to compare the content
+        expect(downloadedContent).to.equal(uploadedContent);
+      });
+    });
   }
 }
 export default RecruitmentTab;
