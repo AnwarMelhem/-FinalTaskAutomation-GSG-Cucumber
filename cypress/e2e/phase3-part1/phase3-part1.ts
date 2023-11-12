@@ -1,8 +1,8 @@
 import { When, Then, Given } from "@badeball/cypress-cucumber-preprocessor";
-import Phase3Apis from "../support/apis/phase3-apis";
-import Dashboard from "../support/pageObjects/dashoboard";
-import RecruitmentTab from "../support/pageObjects/recruitmentTab";
-import SharedHelper from "../support/helpers/shared-helper";
+import Phase3Apis from "../../support/apis/phase3-apis";
+import Dashboard from "../../support/pageObjects/dashoboard";
+import RecruitmentTab from "../../support/pageObjects/recruitmentTab";
+import SharedHelper from "../../support/helpers/shared-helper";
 
 let jobTitleID: any;
 let employeeID: any;
