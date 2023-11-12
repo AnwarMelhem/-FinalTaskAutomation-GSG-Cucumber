@@ -95,3 +95,10 @@ Then(`Admin download the uploaded file`, () => {
 Then('verify dawnloaded data content matches the uploaded data',()=>{
 RecruitmentTab.verifyContentFile("Resume.txt")
 })
+
+afterEach(()=>{
+  Phase3Apis.deleteJobTitle(jobTitleID);
+  Phase3Apis.deleteVacancy(vacancyID);
+  Phase3Apis.deleteEmployee(employeeNumber);
+  Phase3Apis.deleteCandidate(candidateID);
+})
