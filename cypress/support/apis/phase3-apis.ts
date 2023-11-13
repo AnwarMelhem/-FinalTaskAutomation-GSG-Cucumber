@@ -186,8 +186,8 @@ export default class Phase3Apis {
     interviewerEmpNumber: number,
     interviewName: string
   ) {
-    return cy.wrap(undefined).then(() => {
-      cy.api({
+    return cy
+      .api({
         method: "POST",
         url: `/web/index.php/api/v2/recruitment/candidates/${CandidateID}/shedule-interview`,
         body: {
@@ -197,8 +197,43 @@ export default class Phase3Apis {
           note: null,
           interviewerEmpNumbers: [interviewerEmpNumber],
         },
+      })
+      .then((response) => {
+        expect(response).property("status").to.equal(200);
+        return response; // Return the entire response for further processing
+      });
+  }
+  static passedInterview(CandidateID: any, interviewerID: any) {
+    return cy.wrap(undefined).then(() => {
+      cy.api({
+        method: "PUT",
+        url: `/web/index.php/api/v2/recruitment/candidates/${CandidateID}/interviews/${interviewerID}/pass`,
+        body: { note: null },
       }).then((response) => {
-        console.log(response);
+        expect(response).property("status").to.equal(200);
+      });
+    });
+  }
+
+  static hiredCandidate(CandidateID: any) {
+    return cy.wrap(undefined).then(() => {
+      cy.api({
+        method: "PUT",
+        url: `/web/index.php/api/v2/recruitment/candidates/${CandidateID}/hire`,
+        body: { note: null },
+      }).then((response) => {
+        expect(response).property("status").to.equal(200);
+      });
+    });
+  }
+  static jobOffered(CandidateID: any) {
+    return cy.wrap(undefined).then(() => {
+      cy.api({
+        method: "PUT",
+        url: `/web/index.php/api/v2/recruitment/candidates/${CandidateID}/job/offer`,
+        body: { note: null },
+      }).then((response) => {
+        expect(response).property("status").to.equal(200);
       });
     });
   }
