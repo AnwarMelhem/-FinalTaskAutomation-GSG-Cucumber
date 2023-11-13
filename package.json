@@ -3,15 +3,24 @@
   "version": "1.0.0",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:clear": "npm run clear:allure && npm run clear:cypress",
+    "clear:allure": "rimraf allure-results allure-results-aggregated-files allure-report",
+    "clear:cypress": "rimraf cypress/screenshots cypress/videos",
+    "Phase3Part1": "npm run allure:clear && npx cypress run --browser chrome --spec cypress/e2e/phase3-part1/phase3-part1.feature --env allure=true && npm run allure:report",
+    "Phase3Part2": "npm run allure:clear && npx cypress run --browser chrome cypress/e2e/phase3-part1/phase3-part2.feature --env allure=true && npm run allure:report"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "description": "",
   "devDependencies": {
-    "cypress": "^13.5.0",
+    "@shelex/cypress-allure-plugin": "^2.40.0",
+    "allure-commandline": "^2.24.0",
+    "cypress": "^12.14.0",
     "cypress-file-upload": "^5.0.8",
+    "rimraf": "^5.0.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {

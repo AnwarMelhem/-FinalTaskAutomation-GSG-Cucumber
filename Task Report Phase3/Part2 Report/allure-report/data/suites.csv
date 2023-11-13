@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Nov 13 21:42:21 EET 2023","Mon Nov 13 21:42:42 EET 2023","21099","","Managing Candidate Statuses","","","","Verify that the admin can upload a txt file for Application Initiated status candidate",""
+"passed","Mon Nov 13 21:41:53 EET 2023","Mon Nov 13 21:42:14 EET 2023","20704","","Managing Candidate Statuses","","","","Admin Mark Candidate Interview Result To Failed",""
+"passed","Mon Nov 13 21:42:44 EET 2023","Mon Nov 13 21:43:02 EET 2023","18770","","Managing Candidate Statuses","","","","Verify that the admin can upload a txt file for Hired status candidate",""
+"passed","Mon Nov 13 21:41:27 EET 2023","Mon Nov 13 21:41:52 EET 2023","25257","","Managing Candidate Statuses","","","","Admin Mark Candidate Interview Result To Passed",""

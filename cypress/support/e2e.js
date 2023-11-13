@@ -17,6 +17,6 @@
 import './commands'
 import 'cypress-plugin-api'
 import 'cypress-file-upload'
-
+import '@shelex/cypress-allure-plugin';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
